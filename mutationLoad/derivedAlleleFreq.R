@@ -1,0 +1,17 @@
+library(data.table)
+df <- fread("hm32_formatted_sorghumAllele.txt")
+head(df)
+df <- as.data.frame(df)
+df.biallele <- subset(df, df$V3 == df$V5 | df$V3==df$V7)
+df.biallele["derivedAllele"] <- ifelse(df.biallele$V3==df.biallele$V5, df.biallele$V7, df.biallele$V5)
+df.biallele["derivedAlleleFreq"] <- ifelse(df.biallele$V3==df.biallele$V5, df.biallele$V8, df.biallele$V6)
+head(df.biallele)
+summary(df.biallele$derivedAllele)
+table(df.biallele$derivedAllele)
+summary(df.biallele$derivedAlleleFreq)
+df.skinny <- df.biallele[, c(1,2,4, 9, 10)]
+head(df.skinny)
+df.skinny2 <- df.skinny[complete.cases(df.skinny$derivedAlleleFreq), ]
+length(df.skinny2$V1)
+length(df.skinny$V1)
+write.table(df.skinny2, file="hm32_skinny.txt", sep="\t", quote=F, row.names=F)

@@ -1,0 +1,6 @@
+/home/lwang/bamFiles/RIMMA0383_SW_US.IndelRealigned.bam
+/home/lwang/bamFiles/RIMMA0384_SW_US.IndelRealigned.bam
+/home/lwang/bamFiles/RIMMA0385_SW_US.IndelRealigned.bam
+/home/lwang/bamFiles/RIMMA0387_SW_US.IndelRealigned.bam
+/home/lwang/bamFiles/RIMMA0415_SW_US.IndelRealigned.bam
+/home/lwang/bamFiles/RIMMA1012_SW_US.IndelRealigned.bam

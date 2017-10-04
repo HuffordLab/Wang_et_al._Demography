@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#PBS -o ${PBS_JOBNAME}.o${PBS_JOBID}
+#PBS -e ${PBS_JOBNAME}.e${PBS_JOBID}
+#PBS -N msmc
+#PBS -q testq
+#PBS -l vmem=256Gb,pmem=8Gb,mem=256Gb,nodes=1:ppn=32:ib,walltime=120:00:00
+cd $PBS_O_WORKDIR
+module use /data004/software/GIF/modules
+module load msmc
+module load python/3.4.1
+
+python3 /data004/software/GIF/packages/msmc/20140623/tools/multihetsep_bootstrap.py -n 10 -s 20000000 --chunks_per_chromosome 10 --nr_chromosomes 10 Andean_bootstrap Andean_chr1.txt Andean_chr2.txt Andean_chr3.txt Andean_chr4.txt Andean_chr5.txt Andean_chr6.txt Andean_chr7.txt Andean_chr8.txt Andean_chr9.txt Andean_chr10.txt 
+

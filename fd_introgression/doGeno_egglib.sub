@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#PBS -o ${PBS_JOBNAME}.o${PBS_JOBID}
+#PBS -e ${PBS_JOBNAME}.e${PBS_JOBID}
+#PBS -N doGeno
+#PBS -q testq
+#PBS -l vmem=256Gb,pmem=8Gb,mem=256Gb,nodes=1:ppn=32:ib,walltime=120:00:00
+cd $PBS_O_WORKDIR
+module use /data004/software/GIF/modules
+module load python
+module load egglib
+module load perl
+
+./Angsd_doGeno.sh MexHigh_MexLow_mexicana.bamlist
+perl convertDoGeno2egglib.pl <(zcat MexHigh_MexLow_mexicana.geno.gz) > MexHigh_MexLow_mexicana.egglibInput.txt
+python egglib_sliding_windows.py -i MexHigh_MexLow_mexicana.egglibInput.txt -o ./10kb/MexHigh_MexLow_mexicana.egglibOutput.txt -w 10000 -m 1 -s 10000 --report 100 -a pi,dxy,ABBABABA,popS,S --minimumExploitableData 0.5 -p "P1[RIMMA0409,RIMMA0703,RIMMA0720,RIMMA0733,RIMMA1010];P2[RIMMA0421,RIMMA0438,RIMMA0623,RIMMA0626,RIMMA0672,RIMMA0677];P3[TIL08,TIL25];O[Tripsacum]" 
