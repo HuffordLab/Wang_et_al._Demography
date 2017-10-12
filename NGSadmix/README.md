@@ -1,0 +1,1 @@
+# A way to examine population structure using [NGSadmix](http://www.popgen.dk/software/index.php/NgsAdmix) by taking the beagle likelihood genotype file as input, which can be generated via [ANGSD](http://popgen.dk/angsd/index.php/Genotype_likelihoods).

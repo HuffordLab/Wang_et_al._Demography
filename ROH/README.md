@@ -1,0 +1,1 @@
+The Runs of Homozygosity (ROH) analysis was conducted to explore if the strongly bottlenecked Andes population has longer extend of homozygosity. The ROHs was estimated with [PLINK](http://pngu.mgh.harvard.edu/~purcell/plink/ibdibs.shtml#homo).

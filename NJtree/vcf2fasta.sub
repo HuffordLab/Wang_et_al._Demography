@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#PBS -o ${PBS_JOBNAME}.o${PBS_JOBID}
+#PBS -e ${PBS_JOBNAME}.e${PBS_JOBID}
+#PBS -N vcf2fasta
+#PBS -l vmem=256Gb,pmem=8Gb,mem=256Gb,nodes=1:ppn=32:ib,walltime=48:00:00
+#PBS -m ae -M lilepisorus@gmail.com
+cd $PBS_O_WORKDIR
+module load vcftools
+ulimit -s unlimited
+module load perl
+module load R
+module load vcftools
+
+vcftools --vcf ../zea_secondRound_filtered.recode.vcf --max-missing 0.7 --bed chr4Inv.bed --recode --out chr4Inv
+less chr4Inv.recode.vcf | vcf-to-tab > chr4Inv.recode.tab
+perl ../vcf-tab-to-fasta/vcf_tab_to_fasta_alignment.pl -i chr4Inv.recode.tab > chr4Inv.recode.fasta
+
+R CMD BATCH phangorn_NJtree.R
