@@ -1,0 +1,8 @@
+taxa	fixed	seg
+maize	56653	433728
+maize	57644	429271
+maize	56947	433171
+maize	57595	431351
+maize	60564	421666
+teosinte	26947	478594
+
