@@ -18,7 +18,7 @@ To guide the visitors having a better idea about the repo, here we briefly intro
 
 1. **trim_mapping_MD**: Here we stored scripts used to trim fastq reads, map reads to the reference genome, mark duplicate and indel realignment of the bam files.
 2. **map**: Code to generate the sample distribution map. 
-3. ***GATK_SNPcalling**: Scripts documenting SNP calling pipeline in GATK. 
+3. **GATK_SNPcalling**: Scripts documenting SNP calling pipeline in GATK. 
 4. **GeneticDiversityNeutralTestWithAngsd**: Scripts to calculate theta, pi and Tajima's D in ANGSD.
 5. **DAF**: Code to calculate derived allele frequency.
 6. **NGSadmix**: Scripts to find admixture proportions from NGS data. 
