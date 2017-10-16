@@ -1,0 +1,30 @@
+df <- read.delim("allPop.hetero.counts", header=F, sep="")
+df
+names(df) <- c("hetero.counts", "noSites")
+df["hetero.perc"] <- df$hetero.counts/df$noSites
+df
+df["pop"] <- c(rep("Andes", 5), rep("GuaHigh", 3), rep("MexHigh", 6), rep("MexLow", 5), rep("SA_Low", 6), rep("SW_US", 6))
+df <- df[-11, ]
+df
+library(ggplot2)
+colorder <- c("Andes","SA_Low","MexHigh","MexLow", "SW_US", "GuaHigh")
+ggplot(data=df, aes(x=pop, y=hetero.perc)) + geom_boxplot(aes(fill=pop)) + xlab("") + ylab("percentage of heterozygous sites") + scale_x_discrete(limits=colorder,labels=c("Andes","SA_Low","MexHigh","MexLow", "SW_US", "GuaHigh")) + theme_bw()
+ggsave("percHeteroBoxplot.pdf")
+savehistory("percentageOfHeterozygosity.R")
+Andes <- subset(df, df$pop=="Andes")
+GuaHigh <- subset(df, df$pop=="GuaHigh")
+MexHigh <- subset(df, df$pop=="MexHigh")
+MexLow <- subset(df, df$pop=="MexLow")
+SA_Low <- subset(df, df$pop=="SA_Low")
+SW_US <- subset(df, df$pop=="SW_US")
+wilcox.test(Andes$perc.hetero, GuaHigh$perc.hetero, alternative="less")
+wilcox.test(Andes$perc.hetero, SW_US$perc.hetero, alternative="less")
+wilcox.test(Andes$perc.hetero, MexHigh$perc.hetero, alternative="less")
+wilcox.test(Andes$perc.hetero, MexLow$perc.hetero, alternative="less")
+wilcox.test(Andes$perc.hetero, SA_Low$perc.hetero, alternative="less")
+wilcox.test(Andes$hetero.perc, GuaHigh$hetero.perc, alternative="less")
+wilcox.test(Andes$hetero.perc, SW_US$hetero.perc, alternative="less")
+wilcox.test(Andes$hetero.perc, MexHigh$hetero.perc, alternative="less")
+wilcox.test(Andes$hetero.perc, MexLow$hetero.perc, alternative="less")
+wilcox.test(Andes$hetero.perc, SA_Low$hetero.perc, alternative="less")
+savehistory("percentageOfHeterozygosity.R")
