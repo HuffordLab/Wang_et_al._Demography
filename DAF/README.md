@@ -1,7 +1,17 @@
-This analysis is to examine the count of derive homozygous and heterozygous sites among populations.
+#Scripts to calculate deleterious allele frequency, taking MexHigh as an example
 
-#First, use the angsd_SNPcall.sh to calculate the derived allele frequency with Angsd
+1. subset SNPs to the deleterious ones 
+'vcftools --vcf zea_secondRound_filtered.recode.vcf --keep MexHigh.txt --min-alleles 2 --max-alleles 2 --recode --out MexHigh
 
-#Second, use 20150519_derivedHomoSites.sh or 20150729_derivedHeteroSites.sh to count the corresponding genotypes in each individual.
+vcftools --vcf MexHigh.recode.vcf --positions-overlap delSites.txt --recode --out MexHigh.delSites'
 
-#Third, do the boxplot with the R scripts.
+2. determine which allele is deleterious allele
+
+'Rscript combineTwoFiles.R -i MexHigh.delSites.recode.vcf -o MexHigh.delSites.MajorAllele.txt'
+
+3. calculate deleterious allele frequencies
+'perl DeleteriousAlleleFrequency.6.pl MexHigh.delSites.MajorAllele.txt MexHigh.DAF.txt'
+
+4. plot it out with the following R script
+DAFplot.R
+
