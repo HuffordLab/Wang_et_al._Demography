@@ -13,8 +13,7 @@ During migration, certain populations of maize also captured new alleles from wi
 
 ## Architecture about this Repo
 
-A `largedata` directory was intentionally ignored by adding to `gitignore` because of the large size of the files within the folder.
-To guide the visitors having a better idea about the repo, here we briefly introduce the functions or sepecific purposes of the directory system. 
+To guide the visitors having a better idea about the repo, here we briefly introduce the directory system. 
 
 1. **trim_mapping_MD**: Here we stored scripts used to trim fastq reads, map reads to the reference genome, mark duplicate and indel realignment of the bam files.
 2. **map**: Code to generate the sample distribution map. 
