@@ -1,4 +1,4 @@
-#To calculate fd statistic
+**To calculate fd statistic**
 * genotype calling in Angsd (Angsd_doGeno.sh)
 * perl script to convert the doGeno output to the input required by egglib_sliding_windows.py (convertDoGeno2egglib.pl)
 * running the python script egglib_sliding_windows.py to calculate pi, Dxy, S, D, and fd in sliding windows
