@@ -28,7 +28,7 @@ if(countonly==FALSE){
 }
 
 
-all<-mutate(all,del.score=`0`+`1`+`2`+`3`+`4`+`5`+`6`)
+all<-mutate(all,del.score=`0`*0+`1`*1+`2`*2+`3`*3+`4`*4+`5`*5+`6`*6)
 colnames(all)[7]="der.alleles" #change from 7 to 8 because of different column id
 all<-filter(all,(( GERP >=0 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,ifelse(countonly,1,GERP),del.score))
@@ -108,7 +108,7 @@ if(countonly==FALSE){
 }
 
 
-all<-mutate(all,del.score=`0`+`1`+`2`)
+all<-mutate(all,del.score=`0`*0+`1`*1+`2`*2)
 colnames(all)[7]="der.alleles" #change from 7 to 8 because of different column id
 all<-filter(all,(( GERP >=0 & GERP<=2 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,ifelse(countonly,1,GERP),del.score))
@@ -194,7 +194,7 @@ if(countonly==FALSE){
   all$GERP=sgerp(all$GERP)
 }
 
-all<-mutate(all,del.score=`2`+`3`+`4`)
+all<-mutate(all,del.score=`2`*2+`3`*3+`4`*4)
 colnames(all)[7]="der.alleles"
 all<-filter(all,(( GERP >=2 & GERP <=4 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,ifelse(countonly,1,GERP),del.score))
@@ -280,7 +280,7 @@ if(countonly==FALSE){
   all$GERP=sgerp(all$GERP)
 }
 
-all<-mutate(all,del.score=`-2`+`-1`+`0`)
+all<-mutate(all,del.score=`-2`*(-2)+`-1`*(-1)+`0`*0)
 colnames(all)[7]="der.alleles"
 all<-filter(all,(( GERP >=-2 & GERP <=0 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,ifelse(countonly,1,GERP),del.score))
@@ -361,7 +361,7 @@ if(countonly==FALSE){
   all$GERP=sgerp(all$GERP)
 }
 
-all<-mutate(all,del.score=`4`+`5`+`6`)
+all<-mutate(all,del.score=`4`*4+`5`*5+`6`*6)
 colnames(all)[7]="der.alleles"
 all<-filter(all,(( GERP >=4 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,ifelse(countonly,1,GERP),del.score))
@@ -436,7 +436,7 @@ write.table(lind, file="additive.GERP4.load.txt", quote=F, sep="\t", row.names=F
 ### Gerp 0
 
 all<-mbig
-all<-mutate(all,del.score=`0`+`1`+`2`+`3`+`4`+`5`+`6`)
+all<-mutate(all,del.score=`0`*0+`1`*1+`2`*2+`3`*3+`4`*4+`5`*5+`6`*6)
 colnames(all)[7]="der.alleles"
 all<-filter(all,(( GERP >=0 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,1,del.score))
@@ -461,7 +461,7 @@ ggsave("GERP0.fixedSeg.pdf")
 
 ### Gerp -2 to 0
 all<-mbig
-all<-mutate(all,del.score=`-2`+`-1`+`0`)
+all<-mutate(all,del.score=`-2`*(-2)+`-1`*(-1)+`0`*0)
 colnames(all)[7]="der.alleles"
 all<-filter(all,(( GERP >=-2 & GERP <=0 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,1,del.score))
@@ -487,7 +487,7 @@ ggsave("GERP-20.fixedSeg.pdf")
 ### Gerp 0 to 2
 
 all<-mbig
-all<-mutate(all,del.score=`0`+`1`+`2`)
+all<-mutate(all,del.score=`0`*0+`1`*1+`2`*2)
 colnames(all)[7]="der.alleles"
 all<-filter(all,(( GERP >=0 & GERP <=2 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,1,del.score))
@@ -513,7 +513,7 @@ ggsave("GERP02.fixedSeg.pdf")
 ### Gerp 2 to 4
 
 all<-mbig
-all<-mutate(all,del.score=`2`+`3`+`4`)
+all<-mutate(all,del.score=`2`*2+`3`*3+`4`*4)
 colnames(all)[7]="der.alleles"
 all<-filter(all,(( GERP >=2 & GERP <=4 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,1,del.score))
@@ -539,7 +539,7 @@ ggsave("GERP24.fixedSeg.pdf")
 ### Gerp >4
 
 all<-mbig
-all<-mutate(all,del.score=`4`+`5`+`6`)
+all<-mutate(all,del.score=`4`*4+`5`*5+`6`*6)
 colnames(all)[7]="der.alleles"
 all<-filter(all,(( GERP >=4 & REF != derived.allele) | REF == derived.allele))
 all<-mutate(all, del.score=ifelse(REF!=derived.allele,1,del.score))
