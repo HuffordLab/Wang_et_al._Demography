@@ -5,10 +5,10 @@ library(cowplot)
 
 df1 <- read.delim("TeoMaize.homo.GERP0.count.txt")
 head(df1)
-maxtot=mean(subset(df1$tot,df1$taxa=="teosinte"))
-maxtot
+maxtot1=mean(subset(df1$tot,df1$taxa=="teosinte"))
+maxtot1
 
-p1 <- ggplot(df1) + geom_jitter(aes(y=tot/maxtot,x=taxa,color=taxa),size=4,width
+p1 <- ggplot(df1) + geom_jitter(aes(y=tot/maxtot1,x=taxa,color=taxa),size=4,width
 =0.25)+theme(axis.text.y = element_text(size=10),axis.text.x = element_text(size
 =10),axis.title.y = element_text(size=12))+
   xlab("")+
