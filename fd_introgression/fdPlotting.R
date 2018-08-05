@@ -28,6 +28,10 @@ length(MexHigh$fd)
 
 MexHigh.subset2 <- subset(MexHigh.subset, MexHigh.subset$fd>0 & MexHigh.subset$fd<=1)
 
+##90% quantitle in SA_Low 0.3629
+MexHigh.subset3 <- subset(MexHigh.subset2, MexHigh.subset2$fd > 0.3629)
+write.table(MexHigh.subset3[, c(1,3,4)], file="MexHigh.introRegion.90%cutoff", quote=F, sep="\t", row.names=F)
+
 ggplot(data=MexHigh.subset2, aes(x=P2_pi, y=fd)) + stat_smooth(method = "lm", se=FALSE, color="red", formula = y ~ x) + geom_point() + xlab("pairwise nucleotide difference within Mexican Highland population") + ylab("fd") + theme_bw() +  geom_text(color="blue", aes(x = 0.2, y = 1.05, label = lm_eqn(lm(fd ~ P2_pi, MexHigh.subset2))), parse = TRUE) 
 ggsave("MexHigh.pi.fd.correlation.pdf")
 
@@ -51,6 +55,9 @@ length(GuaHigh.subset$fd)
 length(GuaHigh$fd)
 GuaHigh.subset2 <- subset(GuaHigh.subset, GuaHigh.subset$fd>0 & GuaHigh.subset$fd<=1)
 GuaHigh.subset2["pop"] <- "GuaHigh"
+##90% quantitle in SA_Low 0.3629
+GuaHigh.subset3 <- subset(GuaHigh.subset2, GuaHigh.subset2$fd > 0.3629)
+write.table(GuaHigh.subset3[, c(1,3,4)], file="GuaHigh.introRegion.90%cutoff", quote=F, sep="\t", row.names=F)
 
 ggplot(data=GuaHigh.subset2, aes(x=P2_pi, y=fd)) + stat_smooth(method = "lm", se=FALSE, color="red", formula = y ~ x) + geom_point() + xlab("pairwise nucleotide difference within Guatamalan Highland population") + ylab("fd")  + theme_bw() +  geom_text(color="blue", aes(x = 0.2, y = 1.05, label = lm_eqn(lm(fd ~ P2_pi, GuaHigh.subset2))), parse = TRUE) 
 ggsave("GuaHigh.pi.fd.correlation.pdf")
@@ -71,6 +78,10 @@ length(SW_US$fd)
 SW_US.subset2 <- subset(SW_US.subset, SW_US.subset$fd>0 & SW_US.subset$fd<=1)
 SW_US.subset2["pop"] <- "SW_US"
 
+##90% quantitle in SA_Low 0.3629
+SW_US.subset3 <- subset(SW_US.subset2, SW_US.subset2$fd > 0.3629)
+write.table(SW_US.subset3[, c(1,3,4)], file="SW_US.introRegion.90%cutoff", quote=F, sep="\t", row.names=F)
+
 ggplot(data=SW_US.subset2, aes(x=P2_pi, y=fd)) + stat_smooth(method = "lm", se=FALSE, color="red", formula = y ~ x) + geom_point() + xlab("pairwise nucleotide difference within SW_US Highland population") + ylab("fd") + theme_bw() +  geom_text(color="blue", aes(x = 0.2, y = 1.05, label = lm_eqn(lm(fd ~ P2_pi, SW_US.subset2))), parse = TRUE) 
 ggsave("SW_US.pi.fd.correlation.pdf")
 
@@ -89,6 +100,10 @@ length(Andes.subset$fd)
 length(Andes$fd)
 Andes.subset2 <- subset(Andes.subset, Andes.subset$fd>0 & Andes.subset$fd<=1)
 Andes.subset2["pop"] <- "Andes"
+##90% quantitle in SA_Low 0.3629
+Andes.subset3 <- subset(Andes.subset2, Andes.subset2$fd > 0.3629)
+write.table(Andes.subset3[, c(1,3,4)], file="Andes.introRegion.90%cutoff", quote=F, sep="\t", row.names=F)
+
 
 ggplot(data=Andes.subset2, aes(x=P2_pi, y=fd)) + stat_smooth(method = "lm", se=FALSE, color="red", formula = y ~ x) + geom_point() + xlab("pairwise nucleotide difference within Andes population") + ylab("fd") + theme_bw() +  geom_text(color="blue", aes(x = 0.2, y = 1.05, label = lm_eqn(lm(fd ~ P2_pi, Andes.subset2))), parse = TRUE) 
 ggsave("Andes.pi.fd.correlation.pdf")
@@ -213,6 +228,11 @@ cen["mean"] <- (cen$start.Mb. + cen$end)/2
 p <- ggplot(data=combine, aes(x=position/1000000, y=fd, color=pop, group=pop)) + xlab("physical position (Mb)") + ylab("fd") + theme_bw()+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + geom_smooth(method="loess", size=0.5, formula = y ~ x, span=0.01) + facet_grid(scaffold ~ .) 
 p  + scale_x_continuous(breaks=c(0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300)) + geom_vline(aes(xintercept=mean), data=cen, col="grey60") + scale_y_continuous(limits=c(0, 0.5), breaks=c(0.2, 0.4))
 ggsave("fd.track.allPop.new.pdf")
+
+##90% quantitle in SA_Low 0.3629
+MexHigh.subset3 <- subset(MexHigh.subset2, MexHigh.subset2$fd > 0.3629)
+write.table(MexHigh.subset3[, c(1,3,4)], file="MexHigh.introRegion.90%cutoff", quote=F, sep="\t", row.names=F)
+
 
 
 
